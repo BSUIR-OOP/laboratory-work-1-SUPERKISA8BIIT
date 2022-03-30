@@ -8,7 +8,6 @@ namespace paint
 {
     class Square: Figure
     {
-        public string square_file = "square.png";
         public override string fileName => "square.png";
         public Square(int x, int y, int width, int height) : base(x, y, width, height) { }
     }

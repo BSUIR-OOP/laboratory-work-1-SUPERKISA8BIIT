@@ -8,7 +8,6 @@ namespace paint
 {
     class Triangle: Figure
     {
-        public string triangle_file = "triangle.png";
         public override string fileName => "triangle.png";
         public Triangle(int x, int y, int width, int height) : base(x, y, width, height) { }
     }
