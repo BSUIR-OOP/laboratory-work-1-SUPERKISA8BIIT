@@ -15,24 +15,22 @@ namespace paint
     {
         public MainWindow()
         {
-            Figure c = ListOfFigures.circle;
-            Figure t = ListOfFigures.triangle;
-            Figure e = ListOfFigures.ellipse;
-            Figure l = ListOfFigures.line;
-            Figure r = ListOfFigures.rhombus;
-            Figure s = ListOfFigures.square;
-
+            ListOfFigures figures = new ListOfFigures(
+                new Ellipse(200, 0, 300, 150),
+                new Line(200, 300, 300, 150),
+                new Rhombus(400, 250, 300, 150),
+                new Square(500, 0, 300, 150),
+                new Triangle(0, 200, 200, 200),
+                new Circle(0, 0, 200, 200)
+            );
 
 
 
             InitializeComponent();
-            grid.Children.Add(c.DrawFigure());
-            grid.Children.Add(t.DrawFigure());
-            grid.Children.Add(e.DrawFigure());
-            grid.Children.Add(l.DrawFigure());
-            grid.Children.Add(r.DrawFigure());
-            grid.Children.Add(s.DrawFigure());
-
+            foreach(var e in figures)
+            {
+                grid.Children.Add(e.DrawFigure());
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,56 +7,70 @@ using System.Threading.Tasks;
 
 namespace paint
 {
-    static class ListOfFigures
+    public class ListOfFigures: IList<Figure>
     {
-       public static Circle circle
-        {
 
-            get
-            {
-                Circle c = new Circle(0, 0, 200, 200);
-                return c;
-            }
+        private readonly List<Figure> _collection;
+        public int _count ;
+        public ListOfFigures(params Figure[] shapes)
+        {
+            _collection = new List<Figure>(shapes);
         }
 
-   public  static   Ellipse ellipse
+        public Figure this[int index] { get =>_collection[index]; set => _collection[index]=value; }
+
+        public int Count => _collection.Count;
+
+        public bool IsReadOnly => false;
+
+        public void Add(Figure item)
         {
-            get
-            {
-                Ellipse e = new Ellipse(200, 0, 300, 150);
-                return e;
-            }
+          _collection.Add(item);
         }
 
-   public  static   Line line
-       {
-            get
-            {
-              Line l = new Line(200, 300, 300, 150);
-                return l;
-            }
-         }
-
-     public static   Rhombus rhombus
+        public void Clear()
         {
-            get => new Rhombus(400, 250, 300, 150);
+            _collection.Clear();
         }
 
-       public static Square square
+        public bool Contains(Figure item)
         {
-            get
-            {
-                Square s = new Square(500, 0, 300, 150);
-                return s;
-            }
+            return _collection.Contains(item);
         }
-       public static Triangle triangle
+
+        public void CopyTo(Figure[] array, int arrayIndex)
         {
-            get
-            {
-                Triangle t = new Triangle(0, 200, 200, 200);
-                return t;
-            }
+            _collection.CopyTo(array, arrayIndex);
+        }
+
+        public IEnumerator<Figure> GetEnumerator()
+        {
+            return _collection.GetEnumerator();
+        }
+
+        public int IndexOf(Figure item)
+        {
+            return _collection.IndexOf(item);
+        }
+
+        public void Insert(int index, Figure item)
+        {
+             _collection.Insert(index, item);
+        }
+
+        public bool Remove(Figure item)
+        {
+            return _collection.Remove(item);
+        }
+
+        public void RemoveAt(int index)
+        {
+            _collection.RemoveAt(index);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _collection.GetEnumerator();               
         }
     }
 }

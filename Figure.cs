@@ -7,7 +7,7 @@ using System.IO;
 
 namespace paint
 {
-    class Figure
+    public class Figure
     {
         readonly static string path = GetExecutingDirectoryName() + @"\figures\";
         public virtual string fileName => string.Empty;
